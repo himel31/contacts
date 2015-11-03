@@ -1,0 +1,26 @@
+Contact\UserBundle\Entity\User:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        web:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

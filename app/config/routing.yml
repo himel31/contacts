@@ -1,0 +1,21 @@
+contact_user_user_api:
+    resource: "@ContactUserBundle/Controller/UserRESTController.php"
+    type:   rest
+    prefix:   /api
+
+contact_user:
+    resource: "@ContactUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app_post_api:
+    resource: "@AppBundle/Controller/PostRESTController.php"
+    type:   rest
+    prefix:   /api
+
+blog_blog:
+    resource: "@BlogBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
