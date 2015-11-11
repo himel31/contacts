@@ -10,3 +10,4 @@
 /vendor/
 /web/bundles/
 /src/Contact/UserBundle/Resources/public/bower_components/
+/app/config/parameters.yml

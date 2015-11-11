@@ -1,4 +1,3 @@
-symblog
+Contacts
 =======
-
-A Symfony project created on September 28, 2015, 12:26 pm.
+A contact management pet project developed with symfony and angular js.
