@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app = 'contactsApp'>
+<head>
+    <title>Contact</title>
+    <base href="/">
+
+    {% stylesheets
+    '@ContactUserBundle/Resources/public/bower_components/bootstrap/dist/css/bootstrap.min.css'
+    '@ContactUserBundle/Resources/public/css/bootstrap.min.css'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        {% block page_title %}<h1>contact </h1>{% endblock %}
+    </div>
+    <div class="row">
+        {% block body %}<div class="col-sm-12" ng-view></div>{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+            Symfony2 blog tutorial - created by <a href="https://github.com/dsyph3r">dsyph3r</a>
+        {% endblock %}
+    </div>
+</div>
+{% javascripts
+'@ContactUserBundle/Resources/public/bower_components/jquery/dist/jquery.min.js'
+'@ContactUserBundle/Resources/public/bower_components/bootstrap/dist/js/bootstrap.min.js'
+'@ContactUserBundle/Resources/public/bower_components/angularjs/angular.min.js'
+'@ContactUserBundle/Resources/public/bower_components/angular-route/angular-route.min.js'
+'@ContactUserBundle/Resources/public/bower_components/angular-resource/angular-resource.min.js'
+'@ContactUserBundle/Resources/public/src/*'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>

@@ -9,3 +9,4 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/src/Contact/UserBundle/Resources/public/bower_components/

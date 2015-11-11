@@ -1,0 +1,35 @@
+<div class="row form-group" ng-form = "{{fieldname}}"
+     ng-class="{'has-error' : {{fieldname}}.$dirty && {{fieldname}}.$invalid }">
+
+    <!--label-->
+	<label class="col-sm-2 control-label"> 
+		{{fieldname}}
+		<span ng-if="required" >*</span>
+	</label>
+
+	<!--input field-->
+	<div class="col-sm-6" ng-switch="required">
+
+		<input ng-switch-when="true" class="form-control" required
+               ng-model="record[fieldname]" type="{{fieldType}}"
+               ng-change="update()"
+               ng-blur="blurupdate()" >
+
+		<div class="input-group" ng-switch-default>
+			<input class="form-control" ng-model="record[fieldname]"
+                   type="{{fieldType}}"
+                   ng-blur="blurupdate()" ng-change="update()">
+			
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="remove()">
+				<span class="glyphicon glyphicon-remove-circle"></span>
+			</button>
+				</span>
+		</div>
+		
+	</div>
+	
+	<div class="col-sm-4" ng-show="{{fieldname}}.$dirty && {{fieldname}}.$invalid " ng-message="{{fieldname}}.$error">
+        <p class="control-label" ng-message="required">{{fieldname}} is required</p>
+	</div>
+</div>

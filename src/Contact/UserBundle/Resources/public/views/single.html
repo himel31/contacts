@@ -1,0 +1,9 @@
+<p>{{contact['firstName']}} {{contact['firstName']}}</p>
+<form name="newContact" novalidate class="form-horizontal">
+	<form-field record='contact' required='true' fieldname = 'first_name' fieldtype = 'text' live= 'false' ></form-field>
+	<form-field record='contact' required='true' fieldname = 'last_name' fieldtype = 'text' live= 'false' ></form-field>
+	<form-field record='contact' required='false' fieldname = 'email'  fieldtype = 'email' live= 'false' ></form-field>
+	<form-field record='contact' required= false fieldname = 'phone'  fieldtype = 'phone' live= 'false' ></form-field>
+	<form-field record='contact' required='false' fieldname = 'web'  fieldtype = 'web' live= 'false' ></form-field>
+</form>
+<button class="button btn btn-danger" ng-click="delete()">Delete</button>
