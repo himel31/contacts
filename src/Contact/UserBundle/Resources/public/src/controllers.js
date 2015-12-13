@@ -17,9 +17,13 @@ myModule
 		$scope.show = function(_id) {
 			$location.url('/contact/' + _id);	
 		}
+        $scope.newContact = function(_id) {
+            $location.url('/contact/new');
+        }
     }])
-    .controller('NewController', [ '$scope', '$location', 'ContactFactory', function($scope, $location, ContactFactory){
+    .controller('NewController', [ '$scope', '$location', 'ContactFactory', 'CommonService', function($scope, $location, ContactFactory, CommonService){
 
+        //empty object of contact
         $scope.contact = new ContactFactory({
             "first_name" : "",
             "last_name" :  "",
@@ -27,6 +31,8 @@ myModule
             "phone" :  "",
 			"web" :  ""
         });
+
+        //action of create button
         $scope.create = function(_id) {
             if($scope.newContact.$invalid) {
                 $scope.$broadcast('record:invalid');
@@ -35,13 +41,35 @@ myModule
                 $location.url('/contacts');
             }
         }
-    }])
-    .controller('SingleController', [ '$scope', '$location', 'ContactFactory', '$routeParams', function($scope, $location, ContactFactory, $routeParams) {
-        $scope.contact = ContactFactory.get({id: parseInt($routeParams.id, 10)});
 
+        $scope.backToList = function() {
+            CommonService.backToList();
+        }
+
+    }])
+    .controller('SingleController', [ '$scope', '$location', 'ContactFactory', 'CommonService', '$routeParams', function($scope, $location, ContactFactory, CommonService, $routeParams) {
+
+        //fetch contact by id, following by promise
+         fetchedContact = ContactFactory.get({id: parseInt($routeParams.id, 10)},
+            function() {//success
+                $scope.contact = fetchedContact;
+            },
+            function() {//failed to get contact
+                $location.url('/contacts');
+            }
+        );
+
+        //action of delete button
         $scope.delete = function () {
-            $scope.contact.$delete();
-            $location.url('/contacts');
+            if(confirm('Do you realy want to delete ?')) {
+                $scope.contact.$delete();
+                $location.url('/contacts');
+            }
+
+        }
+
+        $scope.backToList = function() {
+            CommonService.backToList();
         }
     }])
 ;

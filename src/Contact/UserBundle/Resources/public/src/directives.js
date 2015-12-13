@@ -25,17 +25,22 @@ myModule
 				 savetimeout = $timeout($scope.blurupdate, 1000);
 				 
 			 };
-			 
+
+			 // update database
 			 $scope.blurupdate = function(){
                  /* $scope.fieldname] is reffer to ng-form property in templateUrl */
-				 if($scope.live !== 'FALSE'
+				 if($scope.live != 'false'
                     && !$scope[$scope.fieldname].$invalid) {
                          $scope.record.$update(function(updaterecord){
                              $scope.record = updaterecord;
                          })
 				 }
 			 };
-			 
+
+			 /* make field value empty,
+			 	not woring properly now,
+			 	@TODO : need to work on server side to fixed it.
+			  */
 			 $scope.remove = function(field){
 				 delete $scope.record[field];
 				 $scope.blurupdate();

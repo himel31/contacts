@@ -3,7 +3,7 @@
 
     <!--label-->
 	<label class="col-sm-2 control-label"> 
-		{{fieldname}}
+		{{fieldname | removeUnderscore}}
 		<span ng-if="required" >*</span>
 	</label>
 
@@ -21,7 +21,7 @@
                    ng-blur="blurupdate()" ng-change="update()">
 			
 			<span class="input-group-btn">
-				<button class="btn btn-default" ng-click="remove()">
+				<button class="btn btn-default" ng-click="remove(fieldname)">
 				<span class="glyphicon glyphicon-remove-circle"></span>
 			</button>
 				</span>
@@ -30,6 +30,6 @@
 	</div>
 	
 	<div class="col-sm-4" ng-show="{{fieldname}}.$dirty && {{fieldname}}.$invalid " ng-message="{{fieldname}}.$error">
-        <p class="control-label" ng-message="required">{{fieldname}} is required</p>
+        <p class="control-label" ng-message="required">{{fieldname | removeUnderscore}} is required</p>
 	</div>
 </div>
